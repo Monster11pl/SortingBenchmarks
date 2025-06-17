@@ -29,5 +29,5 @@ public class BenchmarkRepository(BenchmarkDbContext context) : IBenchmarkReposit
             _context.Benchmarks.Remove(benchmarkToDelete);
     }
 
-    public Task SaveChangesAsync() =>  _context.SaveChangesAsync();
+    public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 }

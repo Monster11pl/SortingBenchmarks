@@ -9,5 +9,5 @@ public interface IBenchmarkRepository
     
     void Add(Benchmark benchmark);
     Task DeleteUpdateAsync(Benchmark benchmark);
-    Task SaveChangesAsync();
+    Task<bool> SaveChangesAsync();
 }

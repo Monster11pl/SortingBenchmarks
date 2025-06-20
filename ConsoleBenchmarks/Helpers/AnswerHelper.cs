@@ -1,8 +1,9 @@
+using Application.Services.Benchmark;
 using SortingAlgorithms.Enums;
 
 namespace ConsoleBenchmarks.Helpers;
 
-public class AnswerHelper
+public class AnswerHelper(BenchmarkService  benchmarkService)
 {
     public static SortAlgorithm GetSortAlgorithmPick()
     {
@@ -52,6 +53,39 @@ public class AnswerHelper
                 return numberAsInt;
             badDecision = true;
             Console.Clear();
+        }
+        while (true);
+    }
+
+    public static bool GetAnswerTo_WishToSaveBenchmarkToDatabase()
+    {
+        do
+        {
+            Console.WriteLine("Do you want to save your benchmark result to database [y/n]");
+            return GetAnswer_YesOrNo();
+        }
+        while (true);
+    }
+
+    public static bool GetAnswerTo_DoAnotherBenchmark()
+    {
+        Console.WriteLine("Do you want to do another benchmark? [y/n]");
+        return GetAnswer_YesOrNo();
+    }
+
+    private static bool GetAnswer_YesOrNo()
+    {
+        do
+        {
+            string? yesOrNo = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(yesOrNo) && yesOrNo.ToLower() == "y")
+                return true;
+            if (!string.IsNullOrWhiteSpace(yesOrNo) && yesOrNo.ToLower() == "n")
+                return false;
+
+            Console.Clear();
+            Console.WriteLine("Please, provide good answer - [Y/N].\n\n");
         }
         while (true);
     }

@@ -1,3 +1,4 @@
+using Data.Interfaces;
 using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ public static class DependencyInjection
         services.AddDbContext<BenchmarkDbContext>();
 
         services.AddScoped<IBenchmarkRepository, BenchmarkRepository>();
+        services.AddScoped<IBenchmarkHardwareInfoRepository, BenchmarkHardwareInfoRepository>();
 
         return services;
     }

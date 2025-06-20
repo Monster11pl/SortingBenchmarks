@@ -1,3 +1,4 @@
+using Application.Models;
 using AutoMapper;
 using Data.Entities;
 
@@ -11,6 +12,9 @@ public class MappingProfile : Profile
             .ForMember(x => x.SortType, opt => opt.MapFrom(src => src.SortAlgorithm) )
             .ForMember(x => x.Time, opt => opt.MapFrom(src => src.ExecutionTime) )
             .ForMember(x => x.ElementsCount, opt => opt.MapFrom(src => src.Elements) )
+            .ReverseMap();
+
+        CreateMap<BenchmarkHardwareInfo, BenchmarkHardwareInfoDto>()
             .ReverseMap();
     }
 }

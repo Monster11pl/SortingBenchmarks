@@ -1,5 +1,6 @@
 using System.Reflection;
 using Application.Services.Benchmark;
+using Data.Interfaces;
 using Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
